@@ -2,7 +2,7 @@
  * Front-End JS Logic
  ****************************************/
 
-const BASE_URL = "https://vmc9witvzh.execute-api.ca-central-1.amazonaws.com";
+const BASE_URL = "https://vmc9witvzh.execute-api.ca-central-1.amazonaws.com/default";
 
 /**
  * Global variable for user info/state
