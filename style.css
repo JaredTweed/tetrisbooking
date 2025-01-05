@@ -1,0 +1,156 @@
+:root {
+  --accent-color: hsl(180, 100%, 38%);
+  /* Define the accent color */
+}
+
+body {
+  font-family: Poppins, sans-serif;
+  margin: 20px;
+  padding: 0;
+}
+
+body * {
+  font-family: Poppins, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  max-width: 475px;
+  margin: 0 auto;
+}
+
+.header {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
+}
+
+h1 {
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.call-to-action {
+  background-color: var(--accent-color);
+}
+
+#public-booking,
+#dashboard {
+  /* background-color: #f0f0f0; */
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+input,
+select,
+button {
+  margin: 5px 0;
+  padding: 2px 4px;
+  border-radius: 5px;
+  min-width: 0;
+}
+
+select,
+button,
+.date-range {
+  cursor: pointer;
+}
+
+.added {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  background: #f0f0f0;
+}
+
+.added .remove {
+  width: 120px;
+}
+
+.appointment-type-block {
+  display: flex;
+  /* flex-wrap: wrap; */
+  gap: 10px;
+}
+
+.type-parameter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.type-parameter label,
+.type-parameter .info {
+  min-width: fit-content;
+}
+
+.type-parameter .type-input {
+  min-width: 0;
+  flex-grow: 1;
+}
+
+.unavailable-text,
+.time-block {
+  width: 225px;
+}
+
+.time-range {
+  width: 135px;
+}
+
+.unavailable-text,
+.time-block,
+.appointment-type-block,
+.blocked-date-block,
+.day-label {
+  padding: 10px;
+  margin: 5px 0;
+
+  /* border: 1px solid #ccc; */
+}
+
+
+.day-block {
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  gap: 5px;
+
+  /* border: 1px solid #ccc; */
+}
+
+.day-label {
+  width: 115px;
+}
+
+.blocked-date-range {
+  width: 205px;
+}
+
+.small-text {
+  margin: 0;
+  font-size: 0.8em;
+  width: fit-content;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.inline-input {
+  width: 50px;
+}

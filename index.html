@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Appointment Booking Demo</title>
+  <link rel="stylesheet" href="/style.css" />
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1 id="welcome-text">Welcome Visitor</h1>
+      </div>
+      <div id="auth-links"></div>
+    </div>
+
+    <label>
+      <input type="checkbox" id="toggle-24hr" />
+      Use 24-Hour Format
+    </label>
+
+    <!-- Public booking interface -->
+    <div id="public-booking">
+      <h2>Book an Appointment</h2>
+      <p>Enter the calendar ID for which you need an appointment:</p>
+      <input type="text" id="public-route" placeholder="my-barber's-calendar" />
+      <button id="check-availability">Check Availability</button>
+
+      <div id="availability-section" class="hidden">
+        <h3>Choose Appointment Type</h3>
+        <select id="appointment-type">
+          <option value="" disabled selected>Select an option</option>
+        </select>
+
+        <div id="date-time-container" style="display: none;">
+          <h3>Select a Date & Time</h3>
+          <input class="date-range" type="text" id="appointment-date" value="Select Date" readonly />
+          <select id="appointment-time">
+            <option value="" disabled selected>Select a time</option>
+          </select>
+        </div>
+
+        <br>
+        <button id="book-appointment" class="call-to-action" style="display: none;">Book Appointment</button>
+      </div>
+
+      <h2 style="margin-top: 10px;">My Appointments</h2>
+      <div id="my-appointments">No appointments scheduled.</div>
+    </div>
+
+
+    <button id="create-calendar" style="display:none;">
+      Create My Calendar
+    </button>
+
+    <!-- Dashboard for logged-in user -->
+    <div id="dashboard" style="display: none;">
+      <h2>View Schedule</h2>
+      <div id="view-schedule"></div>
+      <div id="schedule-container"></div>
+
+      <h2>Configure Your Calendar</h2>
+      <p>Set your unique calendar ID (e.g. "my-cool-calendar"): </p>
+      <input type="text" id="calendar-route" placeholder="my-cool-calendar" />
+
+      <h3>Available Times</h3>
+      <div id="available-times-container"></div>
+
+      <h3>Appointment Types</h3>
+      <p class="small-text">Set durations to multiples of <select class="small-text" id="greatest-common-factor">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15" selected>15</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="60">60</option>
+        </select> minutes.</p>
+      <div id="appointment-types-container"></div>
+      <p class="small-text" id="booking-window-info" style="display: none;">The "booking window" sets the maximum days
+        in advance a client can
+        book, so you can
+        prioritize your
+        most profitable appointments first.</p>
+      <button id="add-appointment-type-block">Add Appointment Type</button>
+
+      <h3>Blocked Dates (e.g., vacations)</h3>
+      <p>List specific dates to exclude:</p>
+      <div id="blocked-dates"></div>
+      <button id="add-blocked-dates">Add Vacation Dates</button>
+
+      <br>
+      <button id="save-calendar" class="call-to-action">Save Calendar</button>
+    </div>
+
+    <button id="delete-calendar" style="display:none;">
+      Delete My Calendar
+    </button>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+
+</html>
