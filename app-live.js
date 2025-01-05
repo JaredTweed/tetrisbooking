@@ -864,6 +864,7 @@ function cancelAppointment(appointmentId) {
 
   fetch(`${BASE_URL}/api/my-appointments/${appointmentId}`, {
     method: "DELETE",
+    credentials: 'include'
   })
     .then((res) => res.json())
     .then((data) => {
@@ -981,6 +982,7 @@ if (deleteCalendarBtn) {
     try {
       const res = await fetch(`${BASE_URL}/api/my-calendar`, {
         method: "DELETE",
+        credentials: 'include'
       });
       const data = await res.json();
       if (data.success) {
