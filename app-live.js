@@ -1477,6 +1477,11 @@ function saveCalendar() {
     } else {
       // block.querySelector(".type-booking-window").classList.remove("input-error");
     }
+
+    if(!name || name == ""){
+      alert("Each appointment type must have a name.");
+      return;
+    }
     
     if (name && duration && window) {
       appointmentTypes.push({ name, duration, window });
