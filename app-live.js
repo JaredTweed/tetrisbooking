@@ -1490,6 +1490,7 @@ function saveCalendar() {
 
   if(appointmentTypes.length < 1){
     alert("You must have an appointment type for your clients to book.")
+    return;
   }
 
   // Send it all to POST /api/save-calendar
