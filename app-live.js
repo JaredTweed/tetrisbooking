@@ -116,13 +116,14 @@ if (toggle24hr) {
 
 function refreshTimeBlocks() {
   // console.log("Refreshing time blocks with 24-hour format:", is24HourFormat);
-  fetchMyCalendar();
-  fetchMyAppointments();
-
   const currentDate = moment($("#schedule-for-date").data('daterangepicker').startDate);
-  fetchAppointmentsForDate(currentDate.format("YYYY-MM-DD"));
-
   updateAvailableTimesForDate(moment(appointmentDateEl.value, "ddd - MMM D, YYYY").format("YYYY-MM-DD"));
+
+  if(currentUser){
+    fetchMyCalendar();
+    fetchMyAppointments();
+    fetchAppointmentsForDate(currentDate.format("YYYY-MM-DD"));
+  }
 }
 
 
@@ -851,7 +852,7 @@ function fetchMyAppointments() {
     .catch((err) => {
       console.error("Error fetching your appointments:", err);
       document.getElementById("my-appointments").textContent =
-        "Error loading your appointments or not logged in.";
+        "No appointments scheduled."; // Error loading your appointments or not logged in.
     });
 }
 
