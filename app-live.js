@@ -613,8 +613,6 @@ function dayHasFeasibleTimes(daySlots, updateTimeSelection = false, chosenDate =
     });
   }
 
-  console.log("5");
-
   if (updateTimeSelection) {
     // First, process with coefficientsOfChosenDate
     if (isChosenDateToday) {
