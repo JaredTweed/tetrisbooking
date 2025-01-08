@@ -1466,14 +1466,31 @@ function saveCalendar() {
 
   // Gather appointment types
   const appointmentTypes = [];
+  let bookingWindowValid = true;
   appointmentTypesContainer.querySelectorAll(".appointment-type-block").forEach((block) => {
     const name = block.querySelector(".type-name").value.trim();
     const duration = block.querySelector(".type-duration").value.trim();
     const window = block.querySelector(".type-booking-window").value.trim();
+    if (!window || isNaN(window) || parseInt(window, 10) < 1) {
+      bookingWindowValid = false;
+      // block.querySelector(".type-booking-window").classList.add("input-error");
+    } else {
+      // block.querySelector(".type-booking-window").classList.remove("input-error");
+    }
+    
     if (name && duration && window) {
       appointmentTypes.push({ name, duration, window });
     }
   });
+
+  if (!bookingWindowValid) {
+    alert("All 'Booking Window (days):' fields must have a valid number greater than 0.");
+    return; // Exit if booking window is invalid
+  }
+
+  if(appointmentTypes.length < 1){
+    alert("You must have an appointment type for your clients to book.")
+  }
 
   // Send it all to POST /api/save-calendar
   fetch(`${BASE_URL}/api/save-calendar`, {
