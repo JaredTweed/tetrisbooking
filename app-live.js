@@ -119,6 +119,8 @@ function refreshTimeBlocks() {
   const currentDate = moment($("#schedule-for-date").data('daterangepicker').startDate);
   updateAvailableTimesForDate(moment(appointmentDateEl.value, "ddd - MMM D, YYYY").format("YYYY-MM-DD"));
 
+  console.log(currentUser);
+
   if(currentUser){
     fetchMyCalendar();
     fetchMyAppointments();
@@ -457,6 +459,7 @@ async function precomputeFullyBookedDays(route, windowDays) {
  */
 function dayHasFeasibleTimes(daySlots, updateTimeSelection = false, chosenDate = moment(), bookedAppointments = []) {
   const selectedOption = appointmentTypeEl.options[appointmentTypeEl.selectedIndex];
+  console.log("1");
   if (!selectedOption) return false;
 
   const appointmentLength = parseInt(selectedOption.getAttribute("data-duration"), 10) || 30;
@@ -464,6 +467,8 @@ function dayHasFeasibleTimes(daySlots, updateTimeSelection = false, chosenDate =
   // Extract coefficients for all appointment types
   const coefficients = globalAvailabilityData.appointmentTypes.map(t => parseInt(t.duration, 10));
 
+  console.log("2");
+  
   // Extract coefficients for appointments valid on the chosen date
   const coefficientsOfChosenDate = globalAvailabilityData.appointmentTypes
     .filter(t => {
@@ -471,6 +476,8 @@ function dayHasFeasibleTimes(daySlots, updateTimeSelection = false, chosenDate =
       return !isNaN(windowDays) && chosenDate.isBetween(moment(), moment().add(windowDays, 'days'), 'day', '[]');
     })
     .map(t => parseInt(t.duration, 10));
+
+  console.log("3");
 
   const isChosenDateTomorrow = chosenDate.isBetween(moment(), moment().add(1, 'days'), 'day', '[]');
   const isChosenDateToday = chosenDate.isSame(moment(), 'day');
@@ -611,6 +618,8 @@ function dayHasFeasibleTimes(daySlots, updateTimeSelection = false, chosenDate =
       appointmentTimeEl.appendChild(opt);
     });
   }
+
+  console.log("5");
 
   if (updateTimeSelection) {
     // First, process with coefficientsOfChosenDate
