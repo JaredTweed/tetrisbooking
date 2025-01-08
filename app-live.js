@@ -1467,6 +1467,7 @@ function saveCalendar() {
   // Gather appointment types
   const appointmentTypes = [];
   let bookingWindowValid = true;
+  let allAppointmentsHaveValidName = true;
   appointmentTypesContainer.querySelectorAll(".appointment-type-block").forEach((block) => {
     const name = block.querySelector(".type-name").value.trim();
     const duration = block.querySelector(".type-duration").value.trim();
@@ -1479,14 +1480,18 @@ function saveCalendar() {
     }
 
     if(!name || name == ""){
-      alert("Each appointment type must have a name.");
-      return;
+      allAppointmentsHaveValidName = false;
     }
     
     if (name && duration && window) {
       appointmentTypes.push({ name, duration, window });
     }
   });
+
+  if(allAppointmentsHaveValidName == false){
+    alert("Each appointment type must have a name.");
+    return;
+  }
 
   if (!bookingWindowValid) {
     alert("All 'Booking Window (days):' fields must have a valid number greater than 0.");
