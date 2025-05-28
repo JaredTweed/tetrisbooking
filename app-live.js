@@ -3,7 +3,8 @@
  ****************************************/
 
 // const BASE_URL = "https://vmc9witvzh.execute-api.ca-central-1.amazonaws.com/default"; //ca-central-1
-const BASE_URL = "https://kjiy3aoyuhmqo4mkbo3vzq6y4q0mtwau.lambda-url.us-west-2.on.aws"; //us-west-2
+// const BASE_URL = "https://kjiy3aoyuhmqo4mkbo3vzq6y4q0mtwau.lambda-url.us-west-2.on.aws"; //us-west-2
+const BASE_URL = "https://brig4ko5ml.execute-api.us-west-2.amazonaws.com/default"
 
 /**
  * Global variable for user info/state
