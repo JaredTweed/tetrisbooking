@@ -41,7 +41,7 @@ async function fetchCurrentUser() {
     if (data.loggedIn) {
       return data.user; // Return the user object (includes displayName)
     }
-  }
+  } else {console.log(response);}
   return null; // Not logged in
 }
 
